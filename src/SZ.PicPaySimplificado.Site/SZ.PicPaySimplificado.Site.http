@@ -1,0 +1,6 @@
+@SZ.PicPaySimplificado.Site_HostAddress = http://localhost:5118
+
+GET {{SZ.PicPaySimplificado.Site_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

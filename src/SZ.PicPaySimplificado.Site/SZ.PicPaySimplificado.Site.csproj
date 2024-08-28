@@ -22,4 +22,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SZ.PicPaySimplificado.Dados\SZ.PicPaySimplificado.Dados.csproj" />
+  </ItemGroup>
+
 </Project>

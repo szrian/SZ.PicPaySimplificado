@@ -16,11 +16,13 @@ internal class TransacaoConfig : IEntityTypeConfiguration<Transacao>
 
 		builder.HasOne(p => p.Pagador)
 			.WithMany(q => q.Transacoes)
-			.HasForeignKey(r => r.PagadorId);
+			.HasForeignKey(r => r.PagadorId)
+			.OnDelete(DeleteBehavior.Restrict);
 
 		builder.HasOne(p => p.Recebedor)
-			.WithMany(q => q.Transacoes)
-			.HasForeignKey(r => r.RecebedorId);
+			.WithMany()
+			.HasForeignKey(r => r.RecebedorId)
+			.OnDelete(DeleteBehavior.Restrict);
 
 		builder.ToTable(NomeTabela);
 	}

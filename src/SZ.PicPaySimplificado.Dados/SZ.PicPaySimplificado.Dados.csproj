@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EntidadesConfig\" />
     <Folder Include="Repositorios\" />
   </ItemGroup>
 
@@ -22,6 +21,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SZ.PicPaySimplificado.Dominio\SZ.PicPaySimplificado.Dominio.csproj" />
   </ItemGroup>
 
 </Project>

@@ -22,6 +22,7 @@ public class Usuario
     public string Email { get; private set; }
     public TipoUsuario TipoUsuario { get; private set; }
     public string Senha { get; private set; }
+    public float Saldo { get; private set; }
 
 	public virtual ICollection<Transacao> Transacoes { get; set; }
 }

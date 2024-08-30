@@ -29,6 +29,9 @@ internal class UsuarioConfig : IEntityTypeConfiguration<Usuario>
 		builder.Property(p => p.TipoUsuario)
 			.IsRequired();
 
+		builder.Property(p => p.Saldo)
+			.IsRequired();
+
 		builder.ToTable(NomeTabela);
 	}
 }

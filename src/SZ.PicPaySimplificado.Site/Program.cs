@@ -6,6 +6,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AdicionarBancoDeDados(builder.Configuration);
+builder.Services.RegistrarRepositorios();
 
 var app = builder.Build();
 

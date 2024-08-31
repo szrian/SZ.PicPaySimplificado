@@ -1,14 +1,11 @@
-using SZ.PicPaySimplificado.Dados.Modulos;
-using SZ.PicPaySimplificado.Dominio.Modulos;
+using SZ.PicPaySimplificado.Site.Configuracao;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AdicionarBancoDeDados(builder.Configuration);
-builder.Services.RegistrarRepositorios();
-builder.Services.RegistrarServicosDeDominio();
+builder.Services.ResolverDependencias(builder.Configuration);
 
 var app = builder.Build();
 

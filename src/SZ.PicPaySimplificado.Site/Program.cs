@@ -1,4 +1,5 @@
 using SZ.PicPaySimplificado.Dados.Modulos;
+using SZ.PicPaySimplificado.Dominio.Modulos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AdicionarBancoDeDados(builder.Configuration);
 builder.Services.RegistrarRepositorios();
+builder.Services.RegistrarServicosDeDominio();
 
 var app = builder.Build();
 

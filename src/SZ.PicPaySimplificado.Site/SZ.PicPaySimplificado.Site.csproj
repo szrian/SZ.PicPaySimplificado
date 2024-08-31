@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SZ.PicPaySimplificado.Dados\SZ.PicPaySimplificado.Dados.csproj" />
+    <ProjectReference Include="..\SZ.PicPaySimplificado.Dominio\SZ.PicPaySimplificado.Dominio.csproj" />
   </ItemGroup>
 
 </Project>

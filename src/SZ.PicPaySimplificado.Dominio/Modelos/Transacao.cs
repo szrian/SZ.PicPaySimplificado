@@ -9,6 +9,7 @@ public class Transacao
     public float Valor {  get; private set; }
     public Guid PagadorId { get; private set; }
     public Guid RecebedorId { get; private set; }
+    public DateTime DataTransacao { get; private set; }
 
     public virtual Usuario Pagador { get; set; }
     public virtual Usuario Recebedor { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace SZ.PicPaySimplificado.Aplicacao.Enums;
+﻿namespace SZ.PicPaySimplificado.CrossCutting.Enums;
 
 public enum TipoUsuario
 {

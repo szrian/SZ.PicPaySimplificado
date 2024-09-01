@@ -3,7 +3,16 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SZ.PicPaySimplificado.CrossCutting\SZ.PicPaySimplificado.CrossCutting.csproj" />
+    <ProjectReference Include="..\SZ.PicPaySimplificado.Dominio\SZ.PicPaySimplificado.Dominio.csproj" />
+  </ItemGroup>
 
 </Project>

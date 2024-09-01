@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SZ.PicPaySimplificado.Aplicacao\SZ.PicPaySimplificado.Aplicacao.csproj" />
+    <ProjectReference Include="..\SZ.PicPaySimplificado.CrossCutting\SZ.PicPaySimplificado.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

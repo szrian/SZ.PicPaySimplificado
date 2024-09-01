@@ -1,21 +1,41 @@
 ﻿using FluentValidation.Results;
-using SZ.PicPaySimplificado.Aplicacao.Enums;
+using SZ.PicPaySimplificado.CrossCutting.Enums;
 using SZ.PicPaySimplificado.Dominio.Validator;
 
 namespace SZ.PicPaySimplificado.Dominio.Modelos;
 
 public class Usuario
 {
-    public Usuario()
-    { }
-
-	public Usuario(string nome, string documento, string email, TipoUsuario tipoUsuario, string senha)
+	public Usuario(string nome,
+		string documento,
+		string email,
+		TipoUsuario tipoUsuario,
+		string senha,
+		float saldo)
 	{
 		Nome = nome;
 		Documento = documento;
 		Email = email;
 		TipoUsuario = tipoUsuario;
 		Senha = senha;
+		Saldo = saldo;
+	}
+
+	public Usuario(Guid id,
+		string nome,
+		string documento,
+		string email,
+		TipoUsuario tipoUsuario,
+		string senha,
+		float saldo)
+	{
+		Id = id;
+		Nome = nome;
+		Documento = documento;
+		Email = email;
+		TipoUsuario = tipoUsuario;
+		Senha = senha;
+		Saldo = saldo;
 	}
 
 	public Guid Id { get;  private set; }

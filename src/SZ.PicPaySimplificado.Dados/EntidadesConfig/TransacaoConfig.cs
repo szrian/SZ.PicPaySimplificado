@@ -24,6 +24,8 @@ internal class TransacaoConfig : IEntityTypeConfiguration<Transacao>
 			.HasForeignKey(r => r.RecebedorId)
 			.OnDelete(DeleteBehavior.Restrict);
 
+		builder.Ignore(p => p.ValidationResult);
+
 		builder.ToTable(NomeTabela);
 	}
 }

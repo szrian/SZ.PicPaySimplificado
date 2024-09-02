@@ -14,7 +14,8 @@ namespace SZ.PicPaySimplificado.Dados.Modulos
 
 		public static IServiceCollection RegistrarRepositorios(this IServiceCollection servicos)
 		{
-			servicos.AddTransient<IUsuarioRepositorio, UsuarioRepositorio>();
+			servicos.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+			servicos.AddScoped<ITransacaoRepositorio, TransacaoRepositorio>();
 
 			return servicos;
 		}

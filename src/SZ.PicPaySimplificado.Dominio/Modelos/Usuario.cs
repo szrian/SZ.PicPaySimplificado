@@ -52,4 +52,9 @@ public class Usuario
 
 	public void Validar() =>
 		ValidationResult = new UsuarioValidator().Validate(this);
+
+	public bool EhUsuarioComum() => TipoUsuario == TipoUsuario.Comum;
+
+	public void Creditar(float valor) => Saldo += valor;
+	public void Debitar(float valor) => Saldo -= valor;
 }

@@ -11,6 +11,7 @@ public static class InstalarDependencias
 	public static IServiceCollection RegistrarServicosDeDominio(this IServiceCollection servicos)
 	{
 		servicos.AddScoped<IUsuarioServico, UsuarioServico>();
+		servicos.AddScoped<ITransacaoServico, TransacaoServico>();
 
 		servicos.AddFluentValidation(config =>
 		{

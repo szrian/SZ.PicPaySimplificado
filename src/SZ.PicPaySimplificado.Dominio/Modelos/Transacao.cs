@@ -5,10 +5,17 @@ namespace SZ.PicPaySimplificado.Dominio.Modelos;
 
 public class Transacao
 {
-    public Transacao()
-    { }
+	public Transacao(float valor,
+        Guid pagadorId,
+        Guid recebedorId)
+	{
+		Valor = valor;
+		PagadorId = pagadorId;
+		RecebedorId = recebedorId;
+        DataTransacao = DateTime.Now;
+	}
 
-    public Guid Id { get; private set; }
+	public Guid Id { get; private set; }
     public float Valor {  get; private set; }
     public Guid PagadorId { get; private set; }
     public Guid RecebedorId { get; private set; }

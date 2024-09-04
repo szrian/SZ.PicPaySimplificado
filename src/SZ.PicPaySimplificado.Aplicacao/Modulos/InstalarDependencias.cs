@@ -10,8 +10,10 @@ public static class InstalarDependencias
 	public static IServiceCollection RegistrarServicosAppService(this IServiceCollection servicos)
 	{
 		servicos.AddScoped<IUsuarioAppService, UsuarioAppService>();
+		servicos.AddScoped<ITransacaoAppService, TransacaoAppService>();
 
 		servicos.AddScoped<IUsuarioConversor, UsuarioConversor>();
+		servicos.AddScoped<ITransacaoConversor, TransacaoConversor>();
 
 		return servicos;
 	}

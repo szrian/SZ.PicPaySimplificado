@@ -32,4 +32,7 @@ public class UsuarioRepositorio : IUsuarioRepositorio
 
 	public async Task<Usuario> ObterPorId(Guid id) =>
 		await _contexto.Set<Usuario>().FindAsync(id);
+
+	public async Task<IEnumerable<Usuario>> ObterTodos() =>
+		await _contexto.Set<Usuario>().AsNoTracking().ToListAsync();
 }

@@ -36,4 +36,15 @@ public class UsuarioAppService : IUsuarioAppService
 
 		return usuarioDto;
 	}
+
+	public async Task<IEnumerable<ObterUsuarioDto>> ObterTodos()
+	{
+		var usuarios = await _usuarioServico.ObterTodos();
+		var usuariosDto = new List<ObterUsuarioDto>();
+
+		foreach (var usuario in usuarios)
+			usuariosDto.Add(_conversor.ConverterParaDtoObter(usuario));
+
+		return usuariosDto;
+	}
 }

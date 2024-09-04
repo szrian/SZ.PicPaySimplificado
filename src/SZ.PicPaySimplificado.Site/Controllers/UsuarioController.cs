@@ -44,5 +44,11 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 
 			return await _usuarioAppService.ObterPorId(id);
 		}
+
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<ObterUsuarioDto>>> ObterTodos()
+		{
+			return Ok(await _usuarioAppService.ObterTodos());
+		}
 	}
 }

@@ -7,4 +7,5 @@ public interface IUsuarioServico
 	Task Adicionar(Usuario usuario);
 	Task Atualizar(Usuario usuario);
 	Task<Usuario> ObterPorId(Guid id);
+	Task<IEnumerable<Usuario>> ObterTodos();
 }

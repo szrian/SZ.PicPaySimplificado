@@ -29,4 +29,7 @@ public class UsuarioServico : IUsuarioServico
 
 	public async Task<Usuario> ObterPorId(Guid id) =>
 		await _usuarioRepositorio.ObterPorId(id);
+
+	public Task<IEnumerable<Usuario>> ObterTodos() =>
+		_usuarioRepositorio.ObterTodos();
 }

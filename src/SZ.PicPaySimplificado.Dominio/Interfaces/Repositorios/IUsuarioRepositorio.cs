@@ -7,5 +7,6 @@ public interface IUsuarioRepositorio
 	Task Adicionar(Usuario usuario);
 	Task Atualizar(Usuario usuario);
 	Task<Usuario> ObterPorId(Guid id);
+	Task<IEnumerable<Usuario>> ObterTodos();
 	Task<int> Commit();
 }

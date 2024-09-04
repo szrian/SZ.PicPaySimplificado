@@ -8,9 +8,11 @@ public class TransacaoServico : ITransacaoServico
 {
     private readonly ITransacaoRepositorio _transacaoRepositorio;
 	private readonly IUsuarioServico _usuarioServico;
-	public TransacaoServico(ITransacaoRepositorio transacaoRepositorio)
+	public TransacaoServico(ITransacaoRepositorio transacaoRepositorio,
+		IUsuarioServico usuarioServico)
 	{
 		_transacaoRepositorio = transacaoRepositorio;
+		_usuarioServico = usuarioServico;
 	}
 	public async Task Adicionar(Transacao transacao)
 	{

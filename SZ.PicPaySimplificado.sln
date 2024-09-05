@@ -15,15 +15,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Dados", "4.1 - Dados"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{98F3E23C-BA91-45BA-8A99-81B0248EAFE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZ.PicPaySimplificado.Site", "src\SZ.PicPaySimplificado.Site\SZ.PicPaySimplificado.Site.csproj", "{C9F2FF16-5124-4576-A17D-048064A14BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZ.PicPaySimplificado.Site", "src\SZ.PicPaySimplificado.Site\SZ.PicPaySimplificado.Site.csproj", "{C9F2FF16-5124-4576-A17D-048064A14BEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZ.PicPaySimplificado.Aplicacao", "src\SZ.PicPaySimplificado.Aplicacao\SZ.PicPaySimplificado.Aplicacao.csproj", "{8BF8B462-A743-4366-9E4D-34BFED525CA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZ.PicPaySimplificado.Aplicacao", "src\SZ.PicPaySimplificado.Aplicacao\SZ.PicPaySimplificado.Aplicacao.csproj", "{8BF8B462-A743-4366-9E4D-34BFED525CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZ.PicPaySimplificado.Dominio", "src\SZ.PicPaySimplificado.Dominio\SZ.PicPaySimplificado.Dominio.csproj", "{42773099-F87A-482A-90C2-1E09D4A56410}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZ.PicPaySimplificado.Dominio", "src\SZ.PicPaySimplificado.Dominio\SZ.PicPaySimplificado.Dominio.csproj", "{42773099-F87A-482A-90C2-1E09D4A56410}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZ.PicPaySimplificado.Dados", "src\SZ.PicPaySimplificado.Dados\SZ.PicPaySimplificado.Dados.csproj", "{B3EA29A4-075A-4D78-BAFA-2581817DF5AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZ.PicPaySimplificado.Dados", "src\SZ.PicPaySimplificado.Dados\SZ.PicPaySimplificado.Dados.csproj", "{B3EA29A4-075A-4D78-BAFA-2581817DF5AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZ.PicPaySimplificado.CrossCutting", "src\SZ.PicPaySimplificado.CrossCutting\SZ.PicPaySimplificado.CrossCutting.csproj", "{62AEACB0-CA35-40C0-98E2-C6FC80EDBBED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SZ.PicPaySimplificado.CrossCutting", "src\SZ.PicPaySimplificado.CrossCutting\SZ.PicPaySimplificado.CrossCutting.csproj", "{62AEACB0-CA35-40C0-98E2-C6FC80EDBBED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - Clients", "4.3 - Clients", "{E2A19255-A788-4F80-B971-6BF2A3498170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SZ.PicPaySimplificado.Clients", "src\SZ.PicPaySimplificado.Clients\SZ.PicPaySimplificado.Clients.csproj", "{1C4ABA6C-533C-434E-87FC-6504FE472A96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,10 @@ Global
 		{62AEACB0-CA35-40C0-98E2-C6FC80EDBBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62AEACB0-CA35-40C0-98E2-C6FC80EDBBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62AEACB0-CA35-40C0-98E2-C6FC80EDBBED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4ABA6C-533C-434E-87FC-6504FE472A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4ABA6C-533C-434E-87FC-6504FE472A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4ABA6C-533C-434E-87FC-6504FE472A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4ABA6C-533C-434E-87FC-6504FE472A96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +71,8 @@ Global
 		{42773099-F87A-482A-90C2-1E09D4A56410} = {FDF3ED50-EED8-4B71-8082-BFCB19A27733}
 		{B3EA29A4-075A-4D78-BAFA-2581817DF5AA} = {851B5F37-BEF0-498E-A63D-E99DBFC621AF}
 		{62AEACB0-CA35-40C0-98E2-C6FC80EDBBED} = {98F3E23C-BA91-45BA-8A99-81B0248EAFE0}
+		{E2A19255-A788-4F80-B971-6BF2A3498170} = {C7EDAD77-C5EC-406F-996A-35ED121B2C75}
+		{1C4ABA6C-533C-434E-87FC-6504FE472A96} = {E2A19255-A788-4F80-B971-6BF2A3498170}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDD4138B-CB92-46D0-B55F-F636A0A6C658}

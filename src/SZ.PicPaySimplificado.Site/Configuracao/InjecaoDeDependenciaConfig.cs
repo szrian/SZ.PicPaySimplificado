@@ -1,5 +1,6 @@
 ﻿using SZ.PicPaySimplificado.Aplicacao.Modulos;
 using SZ.PicPaySimplificado.Clients.AutorizadorTransacoes.Modulos;
+using SZ.PicPaySimplificado.Clients.NotificacaoApi.Modulos;
 using SZ.PicPaySimplificado.Dados.Modulos;
 using SZ.PicPaySimplificado.Dominio.Modulos;
 
@@ -14,6 +15,7 @@ namespace SZ.PicPaySimplificado.Site.Configuracao
 			services.RegistrarServicosDeDominio();
 			services.RegistrarServicosAppService();
 			services.RegistrarAutorizacaoTransacoesServico(configuration);
+			services.RegistrarNotificadorServico(configuration);
 
 			return services;
 		}

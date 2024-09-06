@@ -1,4 +1,5 @@
 ﻿using SZ.PicPaySimplificado.Clients.AutorizadorTransacoes.Interfaces;
+using SZ.PicPaySimplificado.Clients.NotificacaoApi.Interfaces;
 using SZ.PicPaySimplificado.Dominio.Interfaces.Repositorios;
 using SZ.PicPaySimplificado.Dominio.Interfaces.Servicos;
 using SZ.PicPaySimplificado.Dominio.Modelos;
@@ -10,13 +11,16 @@ public class TransacaoServico : ITransacaoServico
     private readonly ITransacaoRepositorio _transacaoRepositorio;
 	private readonly IUsuarioServico _usuarioServico;
 	private readonly IAutorizacaoTransacaoServico _autorizacaoTransacaoServico;
+	private readonly INotificadorServico _notificadorServico;
 	public TransacaoServico(ITransacaoRepositorio transacaoRepositorio,
 		IUsuarioServico usuarioServico,
-		IAutorizacaoTransacaoServico autorizacaoTransacaoServico)
+		IAutorizacaoTransacaoServico autorizacaoTransacaoServico,
+		INotificadorServico notificadorServico)
 	{
 		_transacaoRepositorio = transacaoRepositorio;
 		_usuarioServico = usuarioServico;
 		_autorizacaoTransacaoServico = autorizacaoTransacaoServico;
+		_notificadorServico = notificadorServico;
 	}
 	public async Task Adicionar(Transacao transacao)
 	{
@@ -32,6 +36,11 @@ public class TransacaoServico : ITransacaoServico
 		await _usuarioServico.Atualizar(pagador);
 
 		await _transacaoRepositorio.Adicionar(transacao);
+
+		var resultado = await _notificadorServico.NotificarTransacao();
+
+		if (!resultado)
+			throw new Exception("Não foi possível enviar a notificação da transação.");
 	}
 
 	private async Task ValidarTransacao(Usuario pagador, float valorTransacao)

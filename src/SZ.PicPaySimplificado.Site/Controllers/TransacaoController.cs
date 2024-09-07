@@ -15,13 +15,15 @@ public class TransacaoController : ControllerBase
 	}
 
 	[HttpPost]
-	public async Task<ActionResult<bool>> Transferir(TransacaoDto transacaoDto)
+	public async Task<ActionResult> Transferir(TransacaoDto transacaoDto)
 	{
 		if (transacaoDto == null)
-			return BadRequest(false);
+			return BadRequest("Informe os dados para transação.");
 
-		await _transacaoAppService.Adicionar(transacaoDto);
+		var retorno = await _transacaoAppService.Adicionar(transacaoDto);
+		if (retorno.ValidationResult.Errors.Any())
+			return BadRequest(retorno.ValidationResult.Errors.Select(p => p.ErrorMessage));
 
-		return Ok(true);
+		return Ok("Transação realizada com sucesso!");
 	}
 }

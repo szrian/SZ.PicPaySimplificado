@@ -17,9 +17,9 @@ public class TransacaoAppService : ITransacaoAppService
 		_conversor = conversor;
 	}
 
-	public async Task Adicionar(TransacaoDto transacaoDto)
+	public async Task<TransacaoDto> Adicionar(TransacaoDto transacaoDto)
 	{
 		var transacao = _conversor.ConverterParaEntidade(transacaoDto);
-		await _transacaoServico.Adicionar(transacao);
+		return _conversor.ConverterParaDto(await _transacaoServico.Adicionar(transacao));
 	}
 }

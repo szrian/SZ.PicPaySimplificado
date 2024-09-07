@@ -4,5 +4,5 @@ namespace SZ.PicPaySimplificado.Aplicacao.Interfaces;
 
 public interface ITransacaoAppService
 {
-	Task Adicionar(TransacaoDto transacaoDto);
+	Task<TransacaoDto> Adicionar(TransacaoDto transacaoDto);
 }

@@ -1,4 +1,6 @@
-﻿using SZ.PicPaySimplificado.Clients.AutorizadorTransacoes.Interfaces;
+﻿using FluentValidation.Results;
+using SZ.PicPaySimplificado.Clients.AutorizadorTransacoes.Configuracao;
+using SZ.PicPaySimplificado.Clients.AutorizadorTransacoes.Interfaces;
 using SZ.PicPaySimplificado.Clients.NotificacaoApi.Interfaces;
 using SZ.PicPaySimplificado.Dominio.Interfaces.Repositorios;
 using SZ.PicPaySimplificado.Dominio.Interfaces.Servicos;
@@ -22,36 +24,51 @@ public class TransacaoServico : ITransacaoServico
 		_autorizacaoTransacaoServico = autorizacaoTransacaoServico;
 		_notificadorServico = notificadorServico;
 	}
-	public async Task Adicionar(Transacao transacao)
+	public async Task<Transacao> Adicionar(Transacao transacao)
 	{
+		transacao.Validar();
+		if (!transacao.ValidationResult.IsValid)
+			return transacao;
+
 		var pagador = await _usuarioServico.ObterPorId(transacao.PagadorId);
 		var recebedor = await _usuarioServico.ObterPorId(transacao.RecebedorId);
 
-		await ValidarTransacao(pagador, transacao.Valor);
-
-		recebedor.Creditar(transacao.Valor);
-		pagador.Debitar(transacao.Valor);
-
-		await _usuarioServico.Atualizar(recebedor);
-		await _usuarioServico.Atualizar(pagador);
-
+		var erro = await ValidarTransacao(pagador, transacao.Valor);
+		if (erro != null)
+		{
+			transacao.ValidationResult.Errors.Add(erro);
+			return transacao;
+		}
+			
+		await RealizarTransacao(pagador, recebedor, transacao.Valor);
 		await _transacaoRepositorio.Adicionar(transacao);
-
 		var resultado = await _notificadorServico.NotificarTransacao();
-
 		if (!resultado)
-			throw new Exception("Não foi possível enviar a notificação da transação.");
+			transacao.ValidationResult.Errors.Add(new ValidationFailure(string.Empty,
+												  "Não foi possível enviar a notificação da transação."));
+
+		return transacao;
 	}
 
-	private async Task ValidarTransacao(Usuario pagador, float valorTransacao)
+	private async Task<ValidationFailure> ValidarTransacao(Usuario pagador, float valorTransacao)
 	{
 		if (!pagador.EhUsuarioComum())
-			throw new Exception("Usuários lojistas não podem realizar transações.");
+			return new ValidationFailure(string.Empty, "Usuários lojistas não podem realizar transações.");
 
 		if (pagador.Saldo < valorTransacao)
-			throw new Exception("Você não possui saldo suficiente para realizar essa transação.");
+			return new ValidationFailure(string.Empty, "Você não possui saldo suficiente para realizar essa transação.");
 
 		if (!await _autorizacaoTransacaoServico.AutorizarTransacao())
-			throw new Exception("Transação não autorizada.");
+			return new ValidationFailure(string.Empty, "Transação não autorizada.");
+
+		return null;
+	}
+
+	private async Task RealizarTransacao(Usuario pagador, Usuario recebedor, float valor)
+	{
+		pagador.Debitar(valor);
+		recebedor.Creditar(valor);
+		await _usuarioServico.Atualizar(recebedor);
+		await _usuarioServico.Atualizar(pagador);
 	}
 }

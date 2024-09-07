@@ -27,7 +27,7 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 			if (!retorno.ValidationResult.IsValid)
 				return BadRequest(retorno.ValidationResult.Errors.Select(p => p.ErrorMessage));
 
-			return Ok();
+			return Ok("Usuário cadastrado com sucesso!");
 		}
 
 		[HttpPut]
@@ -41,7 +41,7 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 			if (!retorno.ValidationResult.IsValid)
 				return BadRequest(retorno.ValidationResult.Errors.Select(p => p.ErrorMessage));
 
-			return Ok();
+			return Ok("Usuário atualizado com sucesso!");
 		}
 
 		[HttpGet("{id:guid}")]

@@ -1,4 +1,5 @@
-﻿using SZ.PicPaySimplificado.Dominio.Interfaces.Repositorios;
+﻿using System.Net.Http.Headers;
+using SZ.PicPaySimplificado.Dominio.Interfaces.Repositorios;
 using SZ.PicPaySimplificado.Dominio.Interfaces.Servicos;
 using SZ.PicPaySimplificado.Dominio.Modelos;
 
@@ -13,18 +14,25 @@ public class UsuarioServico : IUsuarioServico
 		_usuarioRepositorio = usuarioRepositorio;
 	}
 
-	public async Task Adicionar(Usuario usuario)
+	public async Task<Usuario> Adicionar(Usuario usuario)
 	{
-		//Validar regras de entidade
+		usuario.Validar();
+
+		if (!usuario.ValidationResult.IsValid)
+			return usuario;
 
 		await _usuarioRepositorio.Adicionar(usuario);
+		return usuario;
 	}
 
-	public async Task Atualizar(Usuario usuario)
+	public async Task<Usuario> Atualizar(Usuario usuario)
 	{
-		//Validar regras de entidade
+		usuario.Validar();
+		if (!usuario.ValidationResult.IsValid)
+			return usuario;
 
 		await _usuarioRepositorio.Atualizar(usuario);
+		return usuario;
 	}
 
 	public async Task<Usuario> ObterPorId(Guid id) =>

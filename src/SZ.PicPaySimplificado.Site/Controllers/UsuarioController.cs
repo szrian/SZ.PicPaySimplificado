@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
+using System.Text;
 using SZ.PicPaySimplificado.Aplicacao.DTOs.Usuario;
 using SZ.PicPaySimplificado.Aplicacao.Interfaces;
 
@@ -15,14 +17,17 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult<bool>> Adicionar(AdicionarUsuarioDto usuarioDto)
+		public async Task<ActionResult> Adicionar(AdicionarUsuarioDto usuarioDto)
 		{
 			if (usuarioDto == null)
 				return BadRequest();
 
-			await _usuarioAppService.Adicionar(usuarioDto);
+			var retorno	= await _usuarioAppService.Adicionar(usuarioDto);
 
-			return Ok(true);
+			if (!retorno.ValidationResult.IsValid)
+				return BadRequest(retorno.ValidationResult.Errors.Select(p => p.ErrorMessage));
+
+			return Ok();
 		}
 
 		[HttpPut]
@@ -31,9 +36,12 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 			if (usuarioDto == null)
 				return BadRequest();
 
-			await _usuarioAppService.Atualizar(usuarioDto);
+			var retorno = await _usuarioAppService.Atualizar(usuarioDto);
 
-			return Ok(true);
+			if (!retorno.ValidationResult.IsValid)
+				return BadRequest(retorno.ValidationResult.Errors.Select(p => p.ErrorMessage));
+
+			return Ok();
 		}
 
 		[HttpGet("{id:guid}")]

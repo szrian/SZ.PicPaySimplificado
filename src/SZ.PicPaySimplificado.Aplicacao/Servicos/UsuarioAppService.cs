@@ -17,16 +17,16 @@ public class UsuarioAppService : IUsuarioAppService
 		_conversor = conversor;
 	}
 
-	public async Task Adicionar(AdicionarUsuarioDto usuarioDto)
+	public async Task<AdicionarUsuarioDto> Adicionar(AdicionarUsuarioDto usuarioDto)
 	{
 		var usuario = _conversor.ConverterParaEntidade(usuarioDto);
-		await _usuarioServico.Adicionar(usuario);
+		return _conversor.ConverterParaDtoAdicionar(await _usuarioServico.Atualizar(usuario));
 	}
 
-	public async Task Atualizar(AdicionarUsuarioDto usuarioDto)
+	public async Task<AdicionarUsuarioDto> Atualizar(AdicionarUsuarioDto usuarioDto)
 	{
 		var usuario = _conversor.ConverterParaEntidade(usuarioDto);
-		await _usuarioServico.Atualizar(usuario);
+		return _conversor.ConverterParaDtoAdicionar(await _usuarioServico.Atualizar(usuario));
 	}
 
 	public async Task<ObterUsuarioDto> ObterPorId(Guid id)

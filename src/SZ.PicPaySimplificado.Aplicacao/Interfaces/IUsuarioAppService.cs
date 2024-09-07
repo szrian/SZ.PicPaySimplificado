@@ -5,8 +5,8 @@ namespace SZ.PicPaySimplificado.Aplicacao.Interfaces;
 
 public interface IUsuarioAppService
 {
-	Task Adicionar(AdicionarUsuarioDto usuarioDto);
-	Task Atualizar(AdicionarUsuarioDto usuarioDto);
+	Task<AdicionarUsuarioDto> Adicionar(AdicionarUsuarioDto usuarioDto);
+	Task<AdicionarUsuarioDto> Atualizar(AdicionarUsuarioDto usuarioDto);
 	Task<ObterUsuarioDto> ObterPorId(Guid id);
 	Task<IEnumerable<ObterUsuarioDto>> ObterTodos();
 }

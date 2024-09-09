@@ -14,6 +14,7 @@ public class TransacaoController : ControllerBase
 		_transacaoAppService = transacaoAppService;
 	}
 
+	[Route("transferir")]
 	[HttpPost]
 	public async Task<ActionResult> Transferir(TransacaoDto transacaoDto)
 	{

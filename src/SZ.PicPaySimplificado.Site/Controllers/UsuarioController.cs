@@ -1,6 +1,4 @@
-﻿using FluentValidation.Results;
-using Microsoft.AspNetCore.Mvc;
-using System.Text;
+﻿using Microsoft.AspNetCore.Mvc;
 using SZ.PicPaySimplificado.Aplicacao.DTOs.Usuario;
 using SZ.PicPaySimplificado.Aplicacao.Interfaces;
 
@@ -16,6 +14,7 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 			_usuarioAppService = usuarioAppService;
 		}
 
+		[Route("novo-usuario")]
 		[HttpPost]
 		public async Task<ActionResult> Adicionar(AdicionarUsuarioDto usuarioDto)
 		{
@@ -30,6 +29,7 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 			return Ok("Usuário cadastrado com sucesso!");
 		}
 
+		[Route("atualizar-usuario")]
 		[HttpPut]
 		public async Task<ActionResult> Atualizar(AdicionarUsuarioDto usuarioDto)
 		{
@@ -44,7 +44,8 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 			return Ok("Usuário atualizado com sucesso!");
 		}
 
-		[HttpGet("{id:guid}")]
+		[Route("obter-por-id/{id:guid}")]
+		[HttpGet]
 		public async Task<ActionResult<ObterUsuarioDto>> ObterPorId(Guid id)
 		{
 			if (id == Guid.Empty)
@@ -53,6 +54,7 @@ namespace SZ.PicPaySimplificado.Site.Controllers
 			return await _usuarioAppService.ObterPorId(id);
 		}
 
+		[Route("obter-todos")]
 		[HttpGet]
 		public async Task<ActionResult<IEnumerable<ObterUsuarioDto>>> ObterTodos()
 		{

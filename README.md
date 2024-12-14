@@ -88,17 +88,26 @@ A primeira controller gerencia os usuários, permitindo criar, atualizar e consu
   {
     "id": "Guid",
     "nome": "string",
-    "tipo": 0,
+    "documento": "string",
+    "email": "string",
+    "tipoUsuario": 0,
+    "senha": "string",
     "saldo": 100.00
   },
   {
     "id": "Guid",
     "nome": "string",
-    "tipo": 1,
+    "documento": "string",
+    "email": "string",
+    "tipoUsuario": 0,
+    "senha": "string",
     "saldo": 250.00
   }
 ]
 ```
+- **tipoUsuário** é um Enum com 2 valores:
+  - **Comum**: 0,
+  - **Lojista**: 1
 
 ### 2. **Transação Controller**
 

@@ -20,7 +20,7 @@ public class UsuarioAppService : IUsuarioAppService
 	public async Task<AdicionarUsuarioDto> Adicionar(AdicionarUsuarioDto usuarioDto)
 	{
 		var usuario = _conversor.ConverterParaEntidade(usuarioDto);
-		return _conversor.ConverterParaDtoAdicionar(await _usuarioServico.Atualizar(usuario));
+		return _conversor.ConverterParaDtoAdicionar(await _usuarioServico.Adicionar(usuario));
 	}
 
 	public async Task<AdicionarUsuarioDto> Atualizar(AdicionarUsuarioDto usuarioDto)

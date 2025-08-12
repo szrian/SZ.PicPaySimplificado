@@ -13,6 +13,14 @@ public static class TransacaoFaker
             Guid.NewGuid());
     }
 
+    public static Transacao GerarTransacaoValidaComUsuarios(Guid pagadorId, Guid recebedorId)
+    {
+        var faker = new Faker("pt_BR");
+        return new Transacao(faker.Random.Float(1, 100),
+            pagadorId,
+            recebedorId);
+    }
+
     public static Transacao GerarTransacaoInvalida()
     {
         var faker = new Faker("pt_BR");

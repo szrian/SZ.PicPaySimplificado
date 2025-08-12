@@ -14,7 +14,7 @@ public class TransacaoValidator : AbstractValidator<Transacao>
 		RuleFor(p => p.PagadorId)
 			.NotEmpty().WithMessage("Usuário pagador não informado.");
 
-		RuleFor(p => p.PagadorId)
+		RuleFor(p => p.RecebedorId)
 			.NotEmpty().WithMessage("Usuário recebedor não informado.");
 	}
 }

@@ -31,7 +31,7 @@ internal static class UsuarioFaker
             faker.Random.Float());
     }
 
-    public static Usuario GerarUsuarioComum()
+    public static Usuario GerarUsuarioComumSemSaldo()
     {
         var faker = new Faker("pt_BR");
 
@@ -40,14 +40,28 @@ internal static class UsuarioFaker
             faker.Person.Email,
             TipoUsuario.Comum,
             faker.Internet.Password(),
-            faker.Random.Float());
+            0);
+    }
+
+    public static Usuario GerarUsuarioComum()
+    {
+        var faker = new Faker("pt_BR");
+
+        return new Usuario(Guid.NewGuid(),
+            faker.Person.FirstName,
+            faker.Person.Cpf(false),
+            faker.Person.Email,
+            TipoUsuario.Comum,
+            faker.Internet.Password(),
+            faker.Random.Float(500, 1000));
     }
 
     public static Usuario GerarUsuarioLojista()
     {
         var faker = new Faker("pt_BR");
 
-        return new Usuario(faker.Company.CompanyName(),
+        return new Usuario(Guid.NewGuid(),
+            faker.Company.CompanyName(),
             faker.Company.Cnpj(false),
             faker.Person.Email,
             TipoUsuario.Lojista,

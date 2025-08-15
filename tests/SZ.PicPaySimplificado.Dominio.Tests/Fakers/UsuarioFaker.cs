@@ -11,7 +11,8 @@ internal static class UsuarioFaker
     {
         var faker = new Faker("pt_BR");
 
-        return new Usuario(faker.Person.FirstName,
+        return new Usuario(Guid.NewGuid(),
+            faker.Person.FirstName,
             faker.Person.Cpf(false),
             faker.Person.Email,
             faker.PickRandom<TipoUsuario>(),

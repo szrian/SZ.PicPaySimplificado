@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Headers;
-using SZ.PicPaySimplificado.Dominio.Interfaces.Repositorios;
+﻿using SZ.PicPaySimplificado.Dominio.Interfaces.Repositorios;
 using SZ.PicPaySimplificado.Dominio.Interfaces.Servicos;
 using SZ.PicPaySimplificado.Dominio.Modelos;
 
